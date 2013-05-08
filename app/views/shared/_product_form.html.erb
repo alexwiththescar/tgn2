@@ -1,0 +1,33 @@
+<%= form_for @product, :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :content, placeholder: "What have you just harvested..." %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><%= f.text_field :price %>
+  </div>
+    <div class="field">
+    <%= f.label :ammount %><%= f.text_field :ammount %>
+  </div>
+<div class="field">
+  <%='Is it Organicly Grown?    ' %><br>
+  <%= f.radio_button :organic, 'organic', :checked => true %> 
+  <%= label :organic_yes, 'Yes', :style => "display:inline" %>
+  <%= f.radio_button :organic, 'No', :style => "display:inline" %>
+  <%= label :organic_no, 'No', :style => "display:inline" %>
+</div><br>
+<div style="display:inline"><div class="field">
+  
+  <%='Can you Deliver Locally?    ' %><br>
+  <%= f.radio_button :delivery, 'Yes', :checked => true %>
+  <%= label :delivery_yes, 'Yes',:style => "display:inline" %>
+  <%= f.radio_button :delivery, 'No', :style => "display:inline" %>
+  <%= label :delivery_no, 'No',  :style => "display:inline" %>
+</div></div><br>
+<p>
+   <b> Picture </b><br/>
+        <%= f.file_field :pic %>
+  </p>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+
+<% end %>

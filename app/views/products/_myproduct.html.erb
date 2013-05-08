@@ -1,0 +1,19 @@
+<% if current_user?(product.user) %>
+<div class="container">
+<div class="row">
+	<li>
+<div class="span4"><%= image_tag product.pic.url(:medium) %></div>
+<div class="span4"><span class="content"><h2><%= product.content %></h2></span>
+  <span class="content"><%=  "   Price per Kilo  ::  " %><%= product.price %></span>
+  <span class="content"><%=  "   Ammount Available  ::  " %><%= product.ammount %></span>
+  <span class="content"><%=  "   Is it Organic  ::  " %><%= product.organic ? 'Yes' : 'No'  %></span>
+  <span class="content"><%=  "   Can it be delivered  ::  " %><%= product.delivery ? 'No' : 'Yes' %></span><span class="timestamp">
+Posted <%= time_ago_in_words(product.created_at) %> ago.
+
+</span>
+
+
+<%= link_to "delete", product, method: :delete,
+confirm: "You sure?",
+title: product.content %>
+<% end %></div>

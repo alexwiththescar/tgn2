@@ -1,0 +1,6 @@
+
+<% provide(:title, 'All the Farms') %>
+
+<ul class="users">
+<%= render @users = User.find(:all, :conditions => {:seller => true}) %>
+</ul>

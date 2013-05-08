@@ -1,0 +1,20 @@
+<div class="container">
+<div class="row">
+  <li>
+<div class="span4"><%= image_tag feed_item.pic.url(:medium) %></div>
+<div class="span4"><span class="content"><h2><%= feed_item.content %></h2></span>
+  <span class="content"><%=  "   Price per Kilo  ::  " %><%= feed_item.price %></span>
+  <span class="content"><%=  "   Ammount Available  ::  " %><%= feed_item.ammount %></span>
+  <span class="content"><%=  "   Is it Organic  ::  " %><%= feed_item.organic ? 'Yes' : 'No'  %></span>
+  <span class="content"><%=  "   Can it be delivered  ::  " %><%= feed_item.delivery ? 'No' : 'Yes' %></span><span class="timestamp">
+Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+
+</span>
+
+<% if current_user?(feed_item.user) %>
+<%= link_to "delete", feed_item, method: :delete,
+confirm: "You sure?",
+title: feed_item.content %>
+<% end %></div>
+<div class="span4">
+<h2>Location</h2><h3><%= feed_item.user.location %></h3>

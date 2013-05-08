@@ -1,0 +1,21 @@
+<% if signed_in? %>
+
+      <h3>Fancy connecting to a local grower... <br> See others produce here..</h3>
+           <%= render 'shared/feed' %>                 
+    
+  
+<% else %>
+  <div class="center hero-unit" >
+    <h1>Welcome The Growers Network</h1>
+
+    <h2>
+      Welcome to the Growers Network Online Trading Platform<br> Your online market place connecting small farmers to people who care about Fresh Local Produce!
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+  
+<% end %>
+

@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row">
+<li><div class="span5 ">
+<%= image_tag user.avatar.url(:thumb) %>
+<%= link_to user.name, user %>
+
+<% if current_user.admin? && !current_user?(user) %>
+| <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+<% end %>
+</div>
+
+
+
+
+<div class="span6">
+<h2>About Us</h2><p> <%= user.description.split[0..20].join(" ") + '...'  %><%= link_to "Read More", user %></p><br>
+    <h3><%= user.location %></h3><br>
+   <p> <% userdistance = Geocoder::Calculations.distance_between([user.latitude,user.longitude], [@current_user.latitude,@current_user.longitude], :units => :km) %>
+   <%= number_with_precision(userdistance, :precision => 0)%> Km away from you</p>
+
+ </div>
+
+</li>
+</div>
+</div>

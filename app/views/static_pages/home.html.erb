@@ -1,0 +1,38 @@
+<% if signed_in? %>
+
+                  
+    <div class="container">
+<div class="row">
+<div class="span4"><h3>Farms I Am Following..</h3>
+           <%= render 'shared/stats' %>  </div>
+<div class="span4">
+Nearby products :
+<ul>
+  <% @user.nearbys(10).each do |nearby_user| %>
+    <li><%= link_to nearby_user.title, nearby_user %></li>
+  <% end %>
+</ul>
+
+</div>
+<div class="span4"></div>
+</div>
+</div>
+
+  
+<% else %>
+  <div class="center hero-unit" >
+    <h1>Welcome To The Growers Network</h1>
+
+    <h2>
+      Welcome to the Growers Network Online Trading Platform<br> Your online market place connecting small farmers to people who care about Fresh Local Produce!
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+  
+<% end %>
+
+<
+

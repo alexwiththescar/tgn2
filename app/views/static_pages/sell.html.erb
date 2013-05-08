@@ -1,0 +1,30 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span7">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+    
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/product_form' %>
+      </section>
+    </aside>
+    
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome The Growers Network</h1>
+
+    <h2>
+      Welcome to the Growers Network Online Trading Platform<br> Your online market place connecting small farmers to people who care about Fresh Local Produce!
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% end %>

@@ -1,0 +1,16 @@
+
+<% provide(:title, 'All Produce') %>
+ <form class="navbar-search pull-left">
+<%= form_tag products_path, :method => :get do  %>
+                                   <p>
+                                         <%= text_field_tag :search  %>                              
+                                   </p>
+                                  <p> <class="button">
+                                         <%= submit_tag "Search" %>
+                                 </p>
+                            <% end %>
+<h1>Latest Things Harvested...</h1>
+
+<ul class="users">
+<%= render @products %>
+</ul>

@@ -1,0 +1,41 @@
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span7">
+    <section><center>
+      <%= image_tag @user.avatar.url %>
+      <h1>
+       
+  
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+    <% unless @user.description.blank? %><div>
+  <center>
+   <h2>About Us</h2><p> <%= @user.description %></p><br></div><% end %>
+   
+
+  </aside>
+  <div class="span4">
+
+<h1>
+<%= @user.name %></h1>
+
+<center><h4><u><%= @user.farm_name %></h4></u><br>
+  <center> <h2>Location</h2><p> <%= @user.location %></p><br>
+   <center> <h2>Contact</h2><p> <%= @user.email %></p><br></center>
+  <center><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=10&markers=#{@user.latitude}%2C#{@user.longitude}" %> 
+  </div>
+</div>
+<section>
+    <%= render 'follow_form' if signed_in? %>
+    <% if @user.products.any? %>
+      <h3>Products (<%= @user.products.count %>)</h3>
+      <ol class="products">
+        <%= render @products %>
+      </ol>
+      <%= will_paginate @products %>
+    <% end %>
+    </section>

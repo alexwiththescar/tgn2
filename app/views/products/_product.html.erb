@@ -1,0 +1,45 @@
+
+<div class="container">
+<div class="row">
+	<li>
+<div class="span4"><%= image_tag product.pic.url(:medium) %></div>
+<div class="span4"><span class="content"><h2><%= product.content %></h2></span>
+  <span class="content"><%=  "   Price per Kilo  ::  " %><%= product.price %></span>
+  <span class="content"><%=  "   Ammount Available  ::  " %><%= product.ammount %></span>
+  <span class="content"><%=  "   Is it Organic  ::  " %><%= product.organic ? 'Yes' : 'No'  %></span>
+  <span class="content"><%=  "   Can it be delivered  ::  " %><%= product.delivery ? 'No' : 'Yes' %></span><span class="timestamp">
+
+
+<ul>
+
+
+
+</ul>
+
+Posted <%= time_ago_in_words(product.created_at) %> ago.
+
+</span>
+
+</div>
+<% if signed_in? %>
+<% if current_user?(product.user) %><br><br><br><br><br><br>
+<center><%= link_to "Remove Listing", product, method: :delete,
+confirm: "You sure?", title: product.content, class: "btn btn-small btn-primary"  %>
+<% else %>
+<div class="span4">
+
+ <h4><%= product.user.location %></h4><h2><%= product.user.farm_name %>  </h2>
+<span class="timestamp">
+<% distance = Geocoder::Calculations.distance_between([product.user.latitude, product.user.longitude], [current_user.latitude,current_user.longitude],{:units => :km, :precision => 2 }) %>
+<%= number_with_precision(distance, :precision => 0) %> Kilometers away from you</span>
+<br><br>
+	<%= link_to "Visit Farm", product.user, class: "btn btn-small btn-primary"  %>
+
+<%= link_to "Message Farmer", users_path, class: "btn btn-small btn-primary"  %></div><% end %><% else %>
+
+<br><br><br><br><br><br>
+<center><%= link_to "Sign Up Here", signup_path, class: "btn btn-small btn-primary"  %><% end %>
+
+</li>
+</div>
+</div>

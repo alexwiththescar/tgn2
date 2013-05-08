@@ -1,0 +1,142 @@
+
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
+<aside class="span5">
+<br>   
+<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label  :location %>
+
+<%= f.select :location, options_for_select(%w[Alameda
+Alcaucín 
+Alfarnate 
+Alfarnatejo 
+Algarrobo 
+Algatocín 
+Alhaurín-de-la-Torre 
+Alhaurín-el-Grande 
+Almáchar 
+Almargen 
+Almogía 
+Álora 
+Alozaina 
+Alpandeire 
+Antequera 
+Árchez 
+Archidona 
+Ardales 
+Arenas 
+Arriate 
+Atajate 
+Benadalid 
+Benahavís 
+Benalauría 
+Benalmádena 
+Benamargosa 
+Benamocarra 
+Benaoján 
+Benarrabá 
+El-Borge 
+El-Burgo 
+Campillos 
+Canillas-de-Aceituno 
+Canillas-de-Albaida 
+Cañete-la-Real 
+Carratraca 
+Cartajima 
+Cártama 
+Casabermeja 
+Casarabonela 
+Casares 
+Coín 
+Colmenar-(Málaga) 
+Comares 
+Cómpeta 
+Cortes-de-la-Frontera 
+Cuevas-Bajas 
+Cuevas-de-San-Marcos 
+Cuevas-del-Becerro 
+Cútar 
+Estepona 
+Faraján 
+Frigiliana 
+Fuengirola 
+Fuente-de-Piedra 
+Gaucín 
+Genalguacil 
+Guaro 
+Humilladero 
+Igualeja 
+Istán 
+Iznate 
+Jimera-de-Líbar 
+Jubrique 
+Júzcar 
+Macharaviaya 
+Málaga 
+Manilva 
+Marbella 
+Mijas 
+Moclinejo 
+Mollina 
+Monda 
+Montejaque 
+Nerja 
+Ojén 
+Parauta 
+Periana 
+Pizarra 
+Pujerra 
+Rincón-de-la-Victoria 
+Riogordo 
+Ronda 
+Salares 
+Sayalonga 
+Sedella 
+Sierra-de-Yeguas 
+Teba 
+Tolox 
+Torremolinos 
+Torrox 
+Totalán 
+Valle-de-Abdalajís 
+Vélez-Málaga 
+Villanueva-de-Algaidas 
+Villanueva-de-Tapia 
+Villanueva-del-Rosario 
+Villanueva-del-Trabuco 
+Viñuela 
+Yunquera ] ) %>
+<%= f.select :location_state, options_for_select(%w[Malaga,España]) %>
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation, "Confirmation" %>
+<%= f.password_field :password_confirmation %>
+
+<%= f.label 'Attach a profile picture for your account' %>
+<%= f.file_field :avatar %>
+<%= f.submit "Update My Profile", class: "btn btn-large btn-primary" %>
+	</section>
+  </aside>
+	<div class="span6"><br>
+  <p> <%='Would you like to sell your produce?    ' %><br>
+ <%= f.radio_button :seller, false %><%= f.label "No, I Just want to buy fresh local produce!", :style => "display:inline"%><br>
+  <%= f.radio_button :seller, true %><%= f.label "Yes, I Grow Produce", :style => "display:inline"%><br>
+  <br />
+<br><br>
+<%= f.label 'Farm Name (optional)'  %>
+<%= f.text_field :farm_name %>
+
+<%= f.label 'Describe What you Grow! (optional)' %>
+<%= f.text_area :description, :size => "30x10" %></p>
+
+
+<% end %>
+</div>
